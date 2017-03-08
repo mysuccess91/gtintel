@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script type="text/javascript" src="./js/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="./jquery-easyui-1.4.5/jquery.min.js"></script>
+<script type="text/javascript" src="./jquery-easyui-1.4.5/jquery.easyui.min.js"></script>
+<!-- 引入EasyUI的中文国际化js，让EasyUI支持中文 -->
+<script type="text/javascript" src="./jquery-easyui-1.4.5/locale/easyui-lang-cz.js"></script>
+<!-- 引入EasyUI的样式文件-->
+<link rel="stylesheet" href="./jquery-easyui-1.4.5/themes/default/easyui.css" type="text/css"/>
+<!-- 引入EasyUI的图标样式文件-->
+<link rel="stylesheet" href="./jquery-easyui-1.4.5/themes/icon.css" type="text/css"/>
+<link rel="stylesheet" href="./jquery-easyui-1.4.5/demo/demo.css" type="text/css"/>
+<link rel="stylesheet" href="./jquery-easyui-1.4.5/themes/default/panel.css" type="text/css"/>
+<script>
+	function addTab(title,url){
+		if($("#home").tabs('exists',title)){
+			$("#home").tabs('select',title);
+		}else{
+			var content = '<iframe scrolling="auto" frameborder="0"  src="'+url+'" style="width:100%;height:100%;"></iframe>';
+			$('#home').tabs('add',{
+				title:title,
+				content:content,
+				closable:true
+			});
+		}
+	}
+</script>
+<title>首页</title>
+</head>
+<body>
+<div id="cc" class="easyui-layout" style="width:600px;height:400px;" data-options="fit:true">
+    <!-- <div id="" data-options="region:'north',title:'gtintel接口测试首页',split:true" style="height:1px;"></div> -->
+	<!-- <div data-options="region:'south',title:'South Title',split:true" style="height:1px;"></div> -->
+   <!--  <div data-options="region:'east',title:'East',split:true" style="width:100px;"></div> -->
+  <div data-options="region:'west',title:'模块分类',split:true" style="width:20%;">
+	  <ul class="easyui-tree">
+			<li>
+				<span>模块分类</span>
+				<ul>
+					<li data-options="state:'opened'">
+						<span>字典</span>
+						<ul>
+							<li>
+								<a  href="#" onclick="addTab('adddictionary','./adddictionary.jsp')">AddDataDictionaryRequest</a>
+							</li>
+							<li>
+								<!-- <a  href="movedictionary.jsp" target="right" >MoveDataDictionaryRequest</a> -->
+								<a  href="#" onclick="addTab('movedictionary','./movedictionary.jsp')">MoveDataDictionaryRequest</a>
+							</li>
+							<li>
+								<a  href="#" onclick="addTab('DelDataDictionary','./deldictionary.jsp')">DelDataDictionaryRequest</a>
+							</li>
+							<li>
+								<a  href="#" onclick="addTab('ModifyDataDictionary','./modifydictionary.jsp')">ModifyDataDictionaryRequest</a>
+							</li>
+							<li>
+								<a  href="#" onclick="addTab('GetDataDictionary','./getdatadic.jsp')">GetDataDicRequest</a>
+							</li>
+							<li>
+								<a  href="#" onclick="addTab('GetByName','./getbyname.jsp')">GetByNameRequest</a>
+							</li>
+							<li>
+								<a  href="#" onclick="addTab('GetIds','./getids.jsp')">GetIdsRequest</a>
+							</li>
+							<li>
+								<a  href="#" onclick="addTab('SearchDic','./searchDictionaries.jsp')">SearchDicRequest</a>
+							</li>
+							<li>
+								<a  href="#" onclick="addTab('GetDictionary','./getdictionary.jsp')">GetDictionary</a>
+							</li>
+							<li>
+								<a  href="#" onclick="addTab('GetDictionaries','./getdictionaries.jsp')">GetDictionaries</a>
+							</li>
+							<li>
+								<a  href="#" onclick="addTab('GetPageIds','./getpageids.jsp')">GetPageIds</a>
+							</li>
+							<li>
+								<a  href="#" onclick="addTab('ResultDic','./resultDic.jsp')">ResultDic</a>
+							</li>
+						</ul>
+					</li>
+					
+					<li  data-options="state:'closed'">
+						<span>客服</span>
+						<ul>
+							<li>
+								<a  href="movedictionary.jsp" target="right" >MoveDataDictionaryRequest</a>
+							</li>
+	
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	
+	<div id="home" class="easyui-tabs"data-options="region:'center',title:'测试页'">
+	 	<div title="Home">
+		</div>
+ 	</div>
+</div>
+	
+</body>
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.2.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/spring-tx-3.2.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+	
+	 
+<!-- 	<bean id="userService" class="gtintel.service.UserServiceImpl">
+		<property name="userDao" ref="jdbcUserDao"></property>
+	</bean> -->
+	
+	<bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		<property name="url" value="jdbc:mysql://192.168.1.207:3306/autotest"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+		<property name="maxActive" value="10"></property>
+		<property name="initialSize" value="2"></property>
+		<property name="minIdle" value="2"></property>
+		<property name="maxIdle" value="3"></property>
+	</bean>
+	
+	<!-- <bean id="userService" class="gtintel.service.UserServiceImpl">
+		<property name="userDao" ref="jdbcUserDao"></property>
+	</bean>
+	<bean id="jdbcUserDao" class="gtintel.dao.JDBCUserDAO">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean> -->
+	
+	<!-- 数据字典配置 -->
+  	<bean id="dataDicService" class="gtintel.service.DataDicServiceImpl">
+		<property name="dicDao" ref="dicDaoimpl"></property>
+	</bean>
+ 	<bean id="dicDaoimpl" class="gtintel.dao.DataDicDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+</beans>
